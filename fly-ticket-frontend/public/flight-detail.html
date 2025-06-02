@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyTicket - Flight Details / Reservation</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>FlyTicket</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="ticket-detail.html">Ticket Inquiry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- 1. Flight Details Section -->
+        <section id="flightDetailSection">
+            <h2>Flight Details</h2>
+            <div id="flightDetailContainer">
+                <!-- Flight information will be displayed here via JavaScript -->
+            </div>
+        </section>
+
+        <!-- 2. Ticket Reservation Form -->
+        <section id="bookingSection" style="margin-top: 2rem;">
+            <h2>Make Reservation</h2>
+            <form id="bookingForm">
+                <input type="hidden" id="flightIdInput" />
+
+                <div class="form-group">
+                    <label for="passengerName">First Name</label>
+                    <input type="text" id="passengerName" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="passengerSurname">Last Name</label>
+                    <input type="text" id="passengerSurname" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="passengerEmail">Email</label>
+                    <input type="email" id="passengerEmail" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="seatNumber">Seat Number (optional)</label>
+                    <input type="text" id="seatNumber" placeholder="e.g. A12" />
+                </div>
+
+                <button type="submit">Confirm Reservation</button>
+            </form>
+            <div id="bookingMessage" style="margin-top: 1rem; color: green;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FlyTicket</p>
+    </footer>
+
+    <!-- Assumes fetchJSON and loadCities helpers are in main.js -->
+    <script src="js/main.js"></script>
+    <!-- This file will be created as flight-detail.js -->
+    <script src="js/flight-detail.js"></script>
+</body>
+
+</html>

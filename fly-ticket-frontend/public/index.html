@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyTicket - Flight Search</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>FlyTicket</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="ticket-detail.html">Ticket Inquiry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="searchSection">
+            <h2>Search Flights</h2>
+
+            <div class="form-group">
+                <label for="fromCitySelect">From</label>
+                <select id="fromCitySelect">
+                    <option value="">Select</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="toCitySelect">To</label>
+                <select id="toCitySelect">
+                    <option value="">Select</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dateInput">Date (optional)</label>
+                <input type="date" id="dateInput" />
+            </div>
+
+            <button id="searchBtn">Search</button>
+            <button id="allFlightsBtn">All Flights</button>
+        </section>
+
+        <section id="flightsSection">
+            <h2 style="margin-top: 1rem; font-weight: bolder;">Flight Results</h2>
+            <div id="flightsContainer">
+                <!-- Flight cards will be added here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FlyTicket</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+</html>

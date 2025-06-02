@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyTicket - Admin Registration</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>FlyTicket</h1>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Admin Registration</h2>
+        <section id="register-section">
+            <form id="register-form">
+                <label>
+                    Username:
+                    <input type="text" id="username" required />
+                </label>
+                <label>
+                    Password:
+                    <input type="password" id="password" required />
+                </label>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div id="register-message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FlyTicket</p>
+    </footer>
+
+    <script>
+        // Register form submit handler
+        document.getElementById('register-form').addEventListener('submit', async (e) =>
+        {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const messageDiv = document.getElementById('register-message');
+
+            // Simple validation
+            if (!username || !password)
+            {
+                messageDiv.textContent = 'Please enter a username and password.';
+                return;
+            }
+
+            try
+            {
+                const res = await fetch('/api/admin/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                if (res.status === 201)
+                {
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = 'Admin registered successfully. Redirecting to login page...';
+                    setTimeout(() =>
+                    {
+                        window.location.href = 'admin-dashboard.html';
+                    }, 1500);
+                } else
+                {
+                    const data = await res.json();
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = data.error || 'Error occurred during registration.';
+                }
+            } catch (err)
+            {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Error connecting to server.';
+            }
+        });
+    </script>
+</body>
+
+</html>

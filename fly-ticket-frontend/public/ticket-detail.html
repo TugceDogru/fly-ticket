@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyTicket - Ticket Inquiry</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>FlyTicket</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="ticket-detail.html">Ticket Inquiry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="lookupSection">
+            <h2>Retrieve Details by Ticket ID or Email</h2>
+            <div class="form-group">
+                <label for="ticketQueryInput">Ticket ID or Email:</label>
+                <input type="text" id="ticketQueryInput"
+                    placeholder="e.g. bf193754-96d9-4250-9d71-364338c8a6ca or user@example.com" />
+            </div>
+            <button id="lookupBtn">Retrieve</button>
+        </section>
+
+        <section id="ticketDetailSection" style="margin-top: 2rem;">
+            <h2>Ticket Information</h2>
+            <div id="ticketDetailContainer">
+                <!-- Ticket and flight details will be loaded here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FlyTicket</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/ticket-detail.js"></script>
+</body>
+
+</html>

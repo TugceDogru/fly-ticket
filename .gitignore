@@ -1,0 +1,24 @@
+# Node.js dependencies (for both backend and frontend)
+node_modules/
+**/node_modules/
+
+# Environment variables files
+fly-ticket-backend/.env
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE / Editor folders (if any)
+.vscode/
+.idea/
+
+# Operating system temporary files
+.DS_Store
+
+# Build/deploy folders 
+dist/
+build/
+coverage/

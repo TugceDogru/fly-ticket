@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyTicket - Admin Panel</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>FlyTicket</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="ticket-detail.html">Ticket Inquiry</a></li>
+            <button id="logoutBtn">Log Out</button>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="dashboardSection">
+            <button id="addFlightBtn">Add New Flight</button>
+            <button id="viewTicketsBtn">All Tickets</button>
+
+            <h2 style="margin-top: 1.5rem;">Flight List</h2>
+            <table id="flightsTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Flight ID</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Price</th>
+                        <th>Seats Total</th>
+                        <th>Seats Available</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Flights will be populated here via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="ticketSearchSection" style="margin-bottom: 2rem;">
+            <h2 style="margin-top: 3rem;">Search Tickets</h2>
+            <div class="form-group">
+                <label for="ticketQueryInput">Ticket ID or Email:</label>
+                <input type="text" id="ticketQueryInput" placeholder="Enter ticket ID or email" />
+                <button id="ticketSearchBtn" style="margin-top: 0.7rem;">Search</button>
+            </div>
+            <div id="ticketSearchResult" style="margin-top: 1rem;">
+                <!-- Search results will be rendered here -->
+            </div>
+        </section>
+
+        <section id="ticketsSection" style="margin-top: 2rem;">
+            <h2 style="margin-top: 3rem;">Admin – All Tickets</h2>
+            <table id="ticketsTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Passenger Name</th>
+                        <th>Passenger Email</th>
+                        <th>Flight ID</th>
+                        <th>Seat Number</th>
+                        <th>Booked At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tickets will be populated here via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FlyTicket</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+
+</html>
