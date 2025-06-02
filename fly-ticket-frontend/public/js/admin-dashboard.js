@@ -19,11 +19,24 @@ onReady(async () => {
     window.location.href = "flight-form.html";
   });
 
-  // 4) “View All Tickets” button behavior
-  document
-    .getElementById("viewTicketsBtn")
-    .addEventListener("click", async () => {
-      try {
+  // 4) All Tickets button (toggle show/hide)
+  const viewTicketsBtn = document.getElementById("viewTicketsBtn");
+  const ticketsSection = document.getElementById("ticketsSection");
+  let ticketsLoaded = false; // Just for the first time fetch
+
+  viewTicketsBtn.addEventListener("click", async () => {
+    // If the section is currently visible: close (hide tickets)
+    if (ticketsSection.style.display === "block") {
+      ticketsSection.style.display = "none";
+      viewTicketsBtn.textContent = "All Tickets";
+      return;
+    }
+
+    // If the section is hidden: first loadCities(), then fetch+render, then show
+    try {
+      // If it is the first time you will load it, just fetch and render.
+      if (!ticketsLoaded) {
+        // 4.a) Pull all tickets from server
         const res = await fetch("/api/tickets", {
           headers: { Authorization: "Bearer " + token },
         });
@@ -33,11 +46,16 @@ onReady(async () => {
         }
         const tickets = await res.json();
         renderTicketsTable(tickets);
-      } catch (err) {
-        console.error(err);
-        alert("Error loading tickets: " + err.message);
+        ticketsLoaded = true;
       }
-    });
+      // 4.b) Make section visible
+      ticketsSection.style.display = "block";
+      viewTicketsBtn.textContent = "Hide Tickets";
+    } catch (err) {
+      console.error(err);
+      alert("Error loading tickets: " + err.message);
+    }
+  });
 
   // 5) “Search Tickets” button behavior
   document

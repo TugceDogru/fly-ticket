@@ -82,6 +82,60 @@ onReady(async () => {
     goHomeBtn.addEventListener("click", () => {
       window.location.href = "index.html";
     });
+
+    // 7) If the “Download E-Ticket” button is clicked: add listener
+    const downloadBtn = document.getElementById("downloadBtn");
+    if (!downloadBtn) {
+      throw new Error("#downloadBtn element not found on page.");
+    }
+    downloadBtn.addEventListener("click", () => {
+      try {
+        // a) Create E-Ticket content
+        const lines = [];
+        lines.push("=== FlyTicket E-Ticket ===");
+        lines.push("");
+        lines.push(`Ticket ID: ${ticket.ticket_id}`);
+        lines.push(
+          `Passenger: ${ticket.passenger_name} ${ticket.passenger_surname}`
+        );
+        lines.push(`Email: ${ticket.passenger_email}`);
+        lines.push(`Seat Number: ${ticket.seat_number || "—"}`);
+        lines.push(`Booked At: ${bookedAtText}`);
+        lines.push("");
+        lines.push("— Flight Details —");
+        lines.push(`Flight ID: ${flight.flight_id}`);
+        lines.push(`From: ${cityMap[flight.from_city] || flight.from_city}`);
+        lines.push(`To: ${cityMap[flight.to_city] || flight.to_city}`);
+        lines.push(
+          `Departure: ${new Date(flight.departure_time).toLocaleString()}`
+        );
+        lines.push(
+          `Arrival: ${new Date(flight.arrival_time).toLocaleString()}`
+        );
+        lines.push(`Price: ₺${parseFloat(flight.price).toFixed(2)}`);
+        lines.push("");
+        lines.push("Thank you for choosing FlyTicket!");
+        lines.push("");
+
+        const content = lines.join("\r\n");
+
+        // b) Create blob, create download link
+        const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        // File name is ticket_<TicketID>.txt
+        a.download = `e-ticket_${ticket.ticket_id}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (errDownload) {
+        console.error("E-Ticket download failed:", errDownload);
+        alert("E-Ticket download failed. Please try again.");
+      }
+    });
   } catch (err) {
     console.error("Error in confirmation.js:", err);
     alert("Error retrieving reservation information: " + (err.message || ""));
