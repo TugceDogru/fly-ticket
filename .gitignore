@@ -11,14 +11,4 @@ yarn-debug.log*
 yarn-error.log*
 *.log
 
-# IDE / Editor folders (if any)
-.vscode/
-.idea/
 
-# Operating system temporary files
-.DS_Store
-
-# Build/deploy folders 
-dist/
-build/
-coverage/
